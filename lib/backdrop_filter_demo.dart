@@ -13,15 +13,22 @@ class BackdropFilterDemo extends DemoPage {
     return Stack(
       children: [
         comparingWidget,
-        BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-          child: Center(
-            child: Container(
-              alignment: Alignment.center,
-              width: 200.0,
-              height: 200.0,
-              color: Colors.green,
-              child: const Text('Hello World'),
+        //         ClipRect(
+        //   clipper: RectClipper(),
+        // child:comparingWidget,
+        //         ),
+        ClipRect(
+          clipper: RectClipper(),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: Center(
+              child: Container(
+                alignment: Alignment.center,
+                width: 200.0,
+                height: 200.0,
+                color: Colors.green,
+                child: const Text('Hello World'),
+              ),
             ),
           ),
         ),
@@ -36,6 +43,21 @@ class BackdropFilterDemo extends DemoPage {
 
   @override
   Widget bottomWidget() {
-    return platformViewWidget();
+    return ClipRRect(child:platformViewWidget(), borderRadius:BorderRadius.all(Radius.circular(50)));
   }
+}
+
+class RectClipper extends CustomClipper<Rect> {
+  @override
+  Rect getClip(Size size) {
+    // TODO: implement getClip
+    return const Rect.fromLTWH(200, 0, 100, 600);
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Rect> oldClipper) {
+    // TODO: implement shouldReclip
+    return true;
+  }
+
 }
