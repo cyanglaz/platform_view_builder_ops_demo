@@ -5,12 +5,16 @@ import 'backdrop_filter_demo.dart';
 import 'color_filter_demo.dart';
 import 'demo_page.dart';
 import 'physical_shape_demo.dart';
+import 'ios_alert_backdrop_filter.dart';
+import 'ios_navigationbar_backdrop_filter.dart';
 
 final List<DemoPage> _allPages = <DemoPage>[
   const ColorFilterDemo(),
   const ShaderMaskDemo(),
   const PhysicalShapeDemo(),
   const BackdropFilterDemo(),
+  const IOSAlertBackdropFilter(),
+  const IOSNavigationBarBackdropFilter(),
 ];
 
 void main() {
